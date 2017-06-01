@@ -71,7 +71,6 @@ void transpile(FILE *in, FILE *out) {
         indent -=4;
         FPRINTF(out, "}\n", indent);
         fflush(out);
-        fclose(out);
 }
 
 int main(int argc, char **argv) {
@@ -125,8 +124,9 @@ int main(int argc, char **argv) {
 
         if (flags & 1)
                 pclose(out);
+        else
+                fclose(out);
 
         fclose(in);
-        fclose(out);
         return 0;
 }
