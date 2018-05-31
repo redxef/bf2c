@@ -1,9 +1,9 @@
 /**
- * @author      
+ * @author
  * @file        main.c
  * @version     0.0.0-r0
- * @since       
- * 
+ * @since
+ *
  * @brief       A brief documentation about the file.
  *
  * A detailed documentation.
@@ -94,10 +94,12 @@ int main(int argc, char **argv) {
                                 in_s = optarg;
                                 break;
                         case 'o': /* output file specified */
-                                out = fopen(optarg, "w");
-                                if (out == NULL) {
-                                        fprintf(stderr, "Failed to open file: %s\n", optarg);
-                                        return 1;
+                                if ((flags & 1) == 0) {
+                                        out = fopen(optarg, "w");
+                                        if (out == NULL) {
+                                                fprintf(stderr, "Failed to open file: %s\n", optarg);
+                                                return 1;
+                                        }
                                 }
                                 out_s = optarg;
                                 break;
